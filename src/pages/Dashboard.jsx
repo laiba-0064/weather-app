@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
-function Dashboard() {
+function Dashboard({ onConditionChange }) {
   const [weatherData, setWeatherData] = useState(null)
   const [forecast, setForecast] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -31,6 +31,8 @@ function Dashboard() {
 
       console.log(response.data)
       setWeatherData(response.data)
+
+      onConditionChange(response.data.weather[0].main)
 
       // Air Quality
       const { lat, lon } = response.data.coord
@@ -63,7 +65,7 @@ function Dashboard() {
   }
 
   useEffect(() => {
-    fetchWeather('Paris')
+    fetchWeather('Mexico')
   }, [])
 
   if (loading) {
