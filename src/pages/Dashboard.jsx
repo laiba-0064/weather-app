@@ -32,7 +32,7 @@ function Dashboard({ onConditionChange }) {
       console.log(response.data)
       setWeatherData(response.data)
 
-      onConditionChange(response.data.weather[0].main)
+      //onConditionChange(response.data.weather[0].main)
 
       // Air Quality
       const { lat, lon } = response.data.coord
@@ -65,7 +65,7 @@ function Dashboard({ onConditionChange }) {
   }
 
   useEffect(() => {
-    fetchWeather('Mexico')
+    fetchWeather('London')
   }, [])
 
   if (loading) {

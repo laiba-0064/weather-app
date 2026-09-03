@@ -1,37 +1,20 @@
+import getWeatherScene from '../utils/weatherUtils'
+import RainParticles from './particles/RainParticles'
+import SnowParticles from './particles/SnowParticles'
+import WindParticles from './particles/WindParticles'
+
 function WeatherBackground({ condition }) {
-  let background
-
-  if (condition === 'Rain') {
-    background = 'rain'
-  } else if (condition === 'Snow') {
-    background = 'snow'
-  } else if (condition === 'Clear') {
-    background = 'clear'
-  } else if (condition === 'Clouds') {
-    background = 'clouds'
-  } else {
-    background = 'default'
-  }
-
-  const rainDrops = Array(10).fill(null)
+  const scene = getWeatherScene(condition)
 
   return (
-    <div className={`weather-background ${background}`}>
-      {condition === 'Clear' && <div className="sun"></div>}
+    <div className={`weather-background ${scene.background}`}>
+      {scene.particles === 'sun' && <div className="sun"></div>}
 
-      {condition === 'Rain' && (
-  <div className="rain-drops">
-    {rainDrops.map((_, index) => (
-  <span
-    key={index}
-    style={{
-      left: `${index * 10}%`,
-      animationDelay: `${index * 0.2}s`
-    }}
-  ></span>
-))}
-  </div>
-)}
+      {scene.particles === 'rain' && <RainParticles />}
+
+      {scene.particles === 'snow' && <SnowParticles />}
+
+      {scene.particles === 'wind' && <WindParticles />}
     </div>
   )
 }

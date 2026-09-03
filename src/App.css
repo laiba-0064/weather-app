@@ -88,3 +88,92 @@
     transform: translateY(100vh) rotate(15deg);
   }
 }
+
+/* SNOW PARTICLES */
+
+/* SNOW PARTICLES */
+
+.snow-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.snow-particles span {
+  position: absolute;
+  top: -10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #b8dff5;
+  opacity: 0.9;
+
+  animation-name: fall-snow;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall-snow {
+  0% {
+    transform: translateY(-10px) translateX(0);
+  }
+
+  25% {
+    transform: translateY(25vh) translateX(15px);
+  }
+
+  50% {
+    transform: translateY(50vh) translateX(-10px);
+  }
+
+  75% {
+    transform: translateY(75vh) translateX(12px);
+  }
+
+  100% {
+    transform: translateY(100vh) translateX(-5px);
+  }
+}
+
+/* WIND PARTICLES*/
+
+.wind-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.windline {
+  position: absolute;
+  left: -200px;
+
+  height: 2px;
+
+  background: rgba(255, 255, 255, 0.3);
+
+  border-radius: 50%;
+
+  animation-name: blow-wind;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blow-wind {
+  0% {
+    transform: translateX(0) rotate(-10deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.6;
+  }
+
+  70% {
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translateX(120vw) rotate(-10deg);
+    opacity: 0;
+  }
+}
