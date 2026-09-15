@@ -96,7 +96,7 @@ function Dashboard({ onConditionChange }) {
   console.log(hourlyForecast)
 
   return (
-    <div>
+    <div className="relative z-10 text-white">
       <p>{weatherData.name}</p>
 
       <h1>{Math.round(weatherData.main.temp)}°</h1>

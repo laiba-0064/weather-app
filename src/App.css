@@ -3,7 +3,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .weather-background.clear {
@@ -13,7 +14,6 @@
     #f7d774
   );
 }
-
 
 .weather-background.rain {
   background: linear-gradient(
@@ -27,6 +27,7 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
+  z-index: 1;
 }
 
 .rain-drops span {
@@ -39,6 +40,13 @@
   animation: rainFall 1s linear infinite;
 }
 
+.weather-background.storm {
+  background: linear-gradient(
+    to bottom,
+    #2f3540,
+    #4a5568
+  );
+}
 
 .weather-background.snow {
   background: white;
@@ -54,28 +62,28 @@
 
 .sun {
   position: absolute;
+  top: 50%;
+  left: 50%;
   width: 120px;
   height: 120px;
   border-radius: 50%;
   background: #ffd54a;
-  top: 80px;
-  right: 120px;
   box-shadow: 0 0 40px #ffd54a;
-
   animation: sunPulse 3s ease-in-out infinite;
+  transform: translate(-50%, -50%);
 }
 
 @keyframes sunPulse {
   0% {
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 
   50% {
-    transform: scale(1.08);
+    transform: translate(-50%, -50%) scale(1.08);
   }
 
   100% {
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
@@ -88,8 +96,6 @@
     transform: translateY(100vh) rotate(15deg);
   }
 }
-
-/* SNOW PARTICLES */
 
 /* SNOW PARTICLES */
 
@@ -107,7 +113,6 @@
   border-radius: 50%;
   background: #b8dff5;
   opacity: 0.9;
-
   animation-name: fall-snow;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -135,7 +140,7 @@
   }
 }
 
-/* WIND PARTICLES*/
+/* WIND PARTICLES */
 
 .wind-particles {
   position: absolute;
@@ -146,13 +151,9 @@
 .windline {
   position: absolute;
   left: -200px;
-
   height: 2px;
-
   background: rgba(255, 255, 255, 0.3);
-
   border-radius: 50%;
-
   animation-name: blow-wind;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
@@ -175,5 +176,79 @@
   100% {
     transform: translateX(120vw) rotate(-10deg);
     opacity: 0;
+  }
+}
+
+/* STORM PARTICLES */
+
+.lightning-flash {
+  position: absolute;
+  inset: 0;
+  background: rgba(160, 185, 255, 0);
+  animation: flash 6s infinite;
+  z-index: 2;
+}
+
+@keyframes flash {
+  0%,
+  85%,
+  89%,
+  93%,
+  100% {
+    background: rgba(160, 185, 255, 0);
+  }
+
+  87%,
+  91% {
+    background: rgba(160, 185, 255, 0.16);
+  }
+}
+
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+/* SUN RAYS */
+
+.sun-rays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+}
+
+.sun-container {
+  position: absolute;
+  top: 80px;
+  right: 120px;
+  width: 200px;
+  height: 200px;
+}
+
+.sunray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 150px;
+  margin-left: -15px;
+  background: rgba(255, 200, 80, 0.1);
+  transform-origin: top center;
+  animation: ray-pulse 4s ease-in-out infinite;
+}
+
+@keyframes ray-pulse {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 1;
   }
 }

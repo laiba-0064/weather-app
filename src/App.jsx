@@ -8,7 +8,7 @@ import Settings from './pages/Settings'
 import WeatherBackground from './components/WeatherBackground'
 
 function App() {
-  const [condition, setCondition] = useState('Clouds')
+  const [condition, setCondition] = useState('Clear')
 
   function handleConditionChange(newCondition) {
     setCondition(newCondition)
