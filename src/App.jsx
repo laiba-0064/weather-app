@@ -8,7 +8,7 @@ import Settings from './pages/Settings'
 import WeatherBackground from './components/WeatherBackground'
 
 function App() {
-  const [condition, setCondition] = useState('Clear')
+  const [condition, setCondition] = useState(null)
 
   function handleConditionChange(newCondition) {
     setCondition(newCondition)
@@ -16,6 +16,7 @@ function App() {
 
   return (
     <>
+
       <WeatherBackground condition={condition} />
 
       <Routes>

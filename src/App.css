@@ -5,6 +5,7 @@
   height: 100%;
   z-index: 0;
   pointer-events: none;
+  transition: background 1.2s ease;
 }
 
 .weather-background.clear {
