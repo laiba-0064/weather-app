@@ -253,3 +253,8 @@
     opacity: 1;
   }
 }
+
+.city-detail {
+  position: relative;
+  z-index: 1;
+}

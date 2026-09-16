@@ -1,6 +1,8 @@
+
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { getAqiInfo } from '../utils/aqiUtils'
+import StatsGrid from '../components/StatsGrid'
 import {
   LineChart,
   Line,
@@ -93,6 +95,25 @@ function Dashboard({ onConditionChange }) {
 
   const aqiInfo = getAqiInfo(aqi)
 
+  const stats = [
+    {
+      label: 'Humidity',
+      value: `${weatherData.main.humidity}%`,
+    },
+    {
+      label: 'Wind',
+      value: `${weatherData.wind.speed} m/s`,
+    },
+    {
+      label: 'Visibility',
+      value: `${weatherData.visibility / 1000} km`,
+    },
+    {
+      label: 'UV Index',
+      value: 'N/A',
+    },
+  ]
+
   console.log(hourlyForecast)
 
   return (
@@ -113,27 +134,7 @@ function Dashboard({ onConditionChange }) {
         Feels like {Math.round(weatherData.main.feels_like)}°
       </p>
 
-      <div className="grid grid-cols-4 gap-4">
-        <div>
-          <p>Humidity</p>
-          <p>{weatherData.main.humidity}%</p>
-        </div>
-
-        <div>
-          <p>Wind</p>
-          <p>{weatherData.wind.speed} m/s</p>
-        </div>
-
-        <div>
-          <p>Visibility</p>
-          <p>{weatherData.visibility / 1000} km</p>
-        </div>
-
-        <div>
-          <p>UV Index</p>
-          <p>N/A</p>
-        </div>
-      </div>
+      <StatsGrid stats={stats} />
 
       <div>
         <h2>5-Day Forecast</h2>
@@ -172,3 +173,10 @@ function Dashboard({ onConditionChange }) {
 }
 
 export default Dashboard
+
+
+
+
+
+
+
